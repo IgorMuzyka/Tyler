@@ -2,11 +2,11 @@
 ## A modular remake of Tyler
 
 Todo:
-- [ ] Podspec for each module
-- [ ] Upload to github
 - [ ] README for each module
 - [ ] Essentials Module
 - [ ] Example module
+- [x] Podspec for each module
+- [x] Upload to github
 
 Modules:
 
