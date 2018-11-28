@@ -1,6 +1,8 @@
 
 import Tag
 
+#if os(iOS) || os(tvOS) || os(macOS)
+
 extension Tyler {
 
     public func copy(tile: Tile) -> Tile {
@@ -35,3 +37,5 @@ extension Tyler {
         return tile
     }
 }
+
+#endif

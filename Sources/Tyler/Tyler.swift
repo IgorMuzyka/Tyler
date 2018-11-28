@@ -5,12 +5,6 @@ import Tag
 import Variable
 import Foundation
 
-extension Tyler {
-
-    internal static let decoder = JSONDecoder()
-    internal static let encoder = JSONEncoder()
-}
-
 #if os(iOS) || os(tvOS) || os(macOS)
 
 open class Tyler {
@@ -182,4 +176,14 @@ private func |> <T, U, V> (from: @escaping (T) -> U, to: @escaping (U) -> V) -> 
     return { to(from($0)) }
 }
 
+#else
+
+open class Tyler {}
+
 #endif
+
+extension Tyler {
+
+    internal static let decoder = JSONDecoder()
+    internal static let encoder = JSONEncoder()
+}
