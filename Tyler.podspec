@@ -11,12 +11,12 @@ Pod::Spec.new do |s|
 	s.author = { 'igormuzyka' => "igormuzyka42@gmail.com" }
 	s.source_files = "Sources/Tyler/*"
 
-	s.dependency "Tyler.Identifier"
-	s.dependency "Tyler.Tag"
-	s.dependency "Tyler.Variable"
-	s.dependency "Tyler.Style"
-	s.dependency "Tyler.Anchor"
-	s.dependency "Tyler.Action"
+	s.dependency "Identifier"
+	s.dependency "Tag"
+	s.dependency "Variable"
+	s.dependency "Style"
+	s.dependency "Anchor"
+	s.dependency "Action"
 
 	s.osx.deployment_target = "10.14"
 	s.ios.deployment_target = "10.0"
