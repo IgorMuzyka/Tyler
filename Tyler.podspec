@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 	s.source = { :git => "https://github.com/IgorMuzyka/Tyler.git", :tag => s.version.to_s }
 	s.license = { :type => "MIT", :file => "LICENSE" }
 	s.author = { 'igormuzyka' => "igormuzyka42@gmail.com" }
-	s.source_files = "Sources/*"
+	s.source_files = "Sources/Tyler/*"
 
 	s.dependency "Tyler.Identifier"
 	s.dependency "Tyler.Tag"
