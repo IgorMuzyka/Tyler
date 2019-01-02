@@ -83,6 +83,12 @@ To be done.
 
 - [ ] Example project
   - [ ] Local usage example
+    - [ ] Basic screen with different layouts for landscape and portrait modes (for example Profile)
   - [ ] Vapor API example
+    - [ ] An interactive list layout with options to add and remove entities while the whole design should be provided by the backend as a response
+    - [ ] Button action example(s)
+    - [ ] Variables utilisation example(change some UI parameters from within UI)
   - [ ] Essentials module
+    - [ ] TileViewController
+    - [ ] RemoteTileViewController
 - [ ] Test coverage for modules which need it
