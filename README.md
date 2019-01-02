@@ -15,7 +15,7 @@ Tyler is inspired by [LeeGo](https://github.com/wangshengjia/LeeGo) but done in 
 
 **Goals:**
 
-- Ability to define UI(and a bit more) for iOS/tvOS/macOS anywhere Swift can run.
+- Ability to define UI(and a bit more) for iOS/tvOS/macOS anywhere Swift can run(including linux).
 - Flexible and Extendable DSL.
 - Persistable and Restorable UI definition.
 
@@ -23,11 +23,7 @@ Tyler is inspired by [LeeGo](https://github.com/wangshengjia/LeeGo) but done in 
 
 ## Example usage
 
-```swift
-
-```
-
-
+To be done.
 
 ## Current project status
 
@@ -54,3 +50,39 @@ Tyler is inspired by [LeeGo](https://github.com/wangshengjia/LeeGo) but done in 
 - Example module
 - Partial/Diffed render
 
+## Repositories (dependency layering)
+
+**Level 0** (Basic types required for minimum functionality)
+
+- [Identifier](https://github.com/IgorMuzyka/Tyler.Identifier)
+
+- [Tag](https://github.com/IgorMuzyka/Tyler.Tag)
+
+- [Variable](https://github.com/IgorMuzyka/Tyler.Variable)
+- [Action](https://github.com/IgorMuzyka/Tyler.Action)
+
+**Level 1**
+
+- [Anchor](https://github.com/IgorMuzyka/Tyler.Anchor) - codable & declarative layout DSL definition which is interpreted into NSLayoutConstraints by Tyler.
+- [Style](https://github.com/IgorMuzyka/Tyler.Style) - a base framework required to design Style & Stylist definitions.
+
+**Level 2**
+
+- [Substitutes](https://github.com/IgorMuzyka/Tyler.Substitutes) - types to be used instead of platform specific types.
+- [Tyler](https://github.com/IgorMuzyka/Tyler) - allows you to layout, style & actionate Tiles into Contexts.
+
+**Level 3** (Styles DSL)
+
+- [Support Apple Common](https://github.com/IgorMuzyka/Tyler.Support.Apple.Common)
+- [Support Apple UIKit](https://github.com/IgorMuzyka/Tyler.Support.Apple.UIKit)
+- [Support Apple AppKit](https://github.com/IgorMuzyka/Tyler.Support.Apple.AppKit)
+
+
+
+## Roadmap
+
+- [ ] Example project
+  - [ ] Local usage example
+  - [ ] Vapor API example
+  - [ ] Essentials module
+- [ ] Test coverage for modules which need it
