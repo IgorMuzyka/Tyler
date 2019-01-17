@@ -1,4 +1,6 @@
 
+import TypePreservingCodingAdapter
+
 #if os(iOS) || os(tvOS) || os(macOS)
 
 public final class Factory {
@@ -8,7 +10,7 @@ public final class Factory {
     public init() {}
 
     public func add<GenericView: NativeView>(_ method: @escaping () -> GenericView) -> Factory {
-        let key = String(reflecting: type(of: GenericView.self))
+        let key = Signature(type: GenericView.self).rawValue
         methods[key] = method
         return self
     }

@@ -1,34 +1,35 @@
 
-import Style
+import TypePreservingCodingAdapter
 import Tag
-import Foundation
+import Style
 
-public class StyleWrap: Codable, Taggable {
+public final class StyleWrap: Tagged, Codable {
 
-    private let data: Data
-    internal let styleType: String
-    public var tags: [Tag] = []
+    public let tags: [Tag]
+    public let style: Style
 
-	public init<GenericStyle: Style>(style: GenericStyle, tags: [Tag]) {
-        styleType = String(reflecting: type(of: style))
-        data = try! Tyler.encoder.encode(style)
+    private enum CodingKeys: CodingKey {
+
+        case style
+        case tags
     }
-}
 
-#if os(iOS) || os(tvOS) || os(macOS)
+    public init(style: Style, tags: [Tag]) {
+        self.style = style
+        self.tags = tags
+    }
 
-extension StyleWrap {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-	internal func unwrap(store: StylesSerializersStore) throws -> Style? {
-		return try store.access(key: styleType)?(data)
-	}
-}
+        self.tags = try container.decode([Tag].self, forKey: .tags)
+        self.style = try container.decode(Wrap.self, forKey: .style).wrapped as! Style
+    }
 
-#endif
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
 
-extension Style {
-
-	internal func wrap(tags: [Tag]) -> StyleWrap {
-		return StyleWrap(style: self, tags: tags)
+        try container.encode(tags, forKey: .tags)
+        try container.encode(Wrap(wrapped: style, strategy: .alias), forKey: .style)
     }
 }

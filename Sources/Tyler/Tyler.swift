@@ -4,6 +4,7 @@ import Action
 import Tag
 import Variable
 import Foundation
+import TypePreservingCodingAdapter
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
@@ -16,23 +17,19 @@ open class Tyler {
     public init(
         factory: Factory,
         stylists: StylistsStore,
-        stylesSerializers: StylesSerializersStore,
         actionHandlers: ActionHandlersStore = .default,
-        actionSerializers: ActionsSerializersStore = .default,
         variableResolvers: VariableResolversStore = .default,
         log: @escaping (String) -> Void = { print($0) }
     ) {
         self.factory = factory
-        self.stores = (stylists, stylesSerializers, actionHandlers, actionSerializers, variableResolvers)
+        self.stores = (stylists, actionHandlers, variableResolvers)
         self.log = log
     }
 }
 
 public typealias Stores = (
     stylists: StylistsStore,
-    stylesSerializers: StylesSerializersStore,
     actionHandlers: ActionHandlersStore,
-    actionSerializers: ActionsSerializersStore,
     variableResolvers: VariableResolversStore
 )
 
@@ -78,23 +75,10 @@ public extension Tyler {
 
     @discardableResult
     public func actionate(context: Context, stores: Stores, tags: [Tag]) -> Context {
-		if !context.tile.actionWraps.isEmpty {
-			tags
-				.match(context.tile.actionWraps)
-				.compactMap { wrap in
-					logErrorIfCatched { try wrap.unwrap(store: stores.actionSerializers) }
-				}
-				.forEach { action in
-					logErrorIfCatched {
-						try Actionator.actionate(view: context.view, with: action, store: stores.actionHandlers)
-					}
-				}
-		}
-
 		if !context.tile.actions.isEmpty {
 			tags
-				.match(context.tile.actions)
-				.map { $0.value }
+                .match(context.tile.actions)
+                .map { $0.action }
 				.forEach { action in
 					logErrorIfCatched {
 						try Actionator.actionate(view: context.view, with: action, store: stores.actionHandlers)
@@ -111,18 +95,8 @@ public extension Tyler {
     public func style(context: Context, stores: Stores, pool: VariablePool, tags: [Tag]) -> Context {
 		var styles = [Style]()
 
-		if !context.tile.styleWraps.isEmpty {
-			styles += tags
-				.match(context.tile.styleWraps)
-				.compactMap { wrap in
-					logErrorIfCatched {
-						try wrap.unwrap(store: stores.stylesSerializers)
-					}
-				}
-		}
-
 		if !context.tile.styles.isEmpty {
-			styles += tags.match(context.tile.styles).map { $0.value }
+			styles += tags.match(context.tile.styles).map { $0.style }
 		}
 
 		if !styles.isEmpty {
@@ -184,6 +158,15 @@ open class Tyler {}
 
 extension Tyler {
 
-    internal static let decoder = JSONDecoder()
-    internal static let encoder = JSONEncoder()
+    internal static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.userInfo[.typePreservingAdapter] = adapter
+        return decoder
+    }()
+    internal static let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.userInfo[.typePreservingAdapter] = adapter
+        return encoder
+    }()
+    public static let adapter = TypePreservingCodingAdapter()
 }

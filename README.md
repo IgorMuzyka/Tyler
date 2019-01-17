@@ -81,14 +81,25 @@ To be done.
 
 ## Roadmap
 
-- [ ] Example project
-  - [ ] Local usage example
-    - [ ] Basic screen with different layouts for landscape and portrait modes (for example Profile)
-  - [ ] Vapor API example
-    - [ ] An interactive list layout with options to add and remove entities while the whole design should be provided by the backend as a response
-    - [ ] Button action example(s)
-    - [ ] Variables utilisation example(change some UI parameters from within UI)
-  - [ ] Essentials module
-    - [ ] TileViewController
-    - [ ] RemoteTileViewController
-- [ ] Test coverage for modules which need it
+- [ ] Example project [36h+?]
+  - [ ] Local usage example. [8h]
+    - [ ] Select a design to reporduce. [2h]
+    - [ ] Basic screen with different layouts for landscape and portrait modes (for example Profile). [6h]
+  - [ ] Vapor API example. [26h]
+    - [ ] An interactive list layout with options to add and remove entities while the whole design should be provided by the backend as a response. [12h]
+    - [ ] Select a design to reporduce. [2h]
+    - [ ] Button action example(s). [6h]
+    - [ ] Variables utilisation example(change some UI parameters from within UI). [6h]
+  - [ ] Essentials module. [?h]
+    - [ ] TileViewController. [?h]
+    - [ ] RemoteTileViewController. [?h]
+    - [ ] A module itself. [2h]
+- [ ] Test coverage for modules which need it. [32h]
+  - [ ] Variable. [4h]
+  - [ ] Tag. [4h]
+  - [ ] Identifier. [3h]
+  - [ ] Anchor. [6h]
+  - [ ] Tyler. [6h]
+  - [ ] Support.Apple.UIKIt. [3h]
+  - [ ] Support.Apple.AppKit. [3h]
+  - [ ] Support.Apple.Common. [3h]

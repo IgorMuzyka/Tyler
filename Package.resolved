@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Tyler.Action",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Action",
+        "state": {
+          "branch": "master",
+          "revision": "212c77d09d8175310764c289af50953a5a612df2",
+          "version": null
+        }
+      },
+      {
+        "package": "Tyler.Anchor",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Anchor",
+        "state": {
+          "branch": "master",
+          "revision": "eeb9d09bc25963a96a770a8812c094da9594d471",
+          "version": null
+        }
+      },
+      {
+        "package": "Tyler.Identifier",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Identifier",
+        "state": {
+          "branch": "master",
+          "revision": "7cae3ec51fa514749a98c98d578f991169e5d1e5",
+          "version": null
+        }
+      },
+      {
+        "package": "Tyler.Style",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Style",
+        "state": {
+          "branch": "master",
+          "revision": "938a47e7dc695fcf8c9e58288031cd7a21811139",
+          "version": null
+        }
+      },
+      {
+        "package": "Tyler.Tag",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Tag",
+        "state": {
+          "branch": "master",
+          "revision": "235120d0dd85d0b2db95ba04f6637fc6f87b19b6",
+          "version": null
+        }
+      },
+      {
+        "package": "Tyler.Variable",
+        "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Variable",
+        "state": {
+          "branch": "master",
+          "revision": "b5e2b1c7f7750c33c2c921396d1974bd72b8d46e",
+          "version": null
+        }
+      },
+      {
+        "package": "TypePreservingCodingAdapter",
+        "repositoryURL": "https://github.com/IgorMuzyka/Type-Preserving-Coding-Adapter",
+        "state": {
+          "branch": "master",
+          "revision": "56de4b11ca4154837b18634628e6370bb53fd095",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

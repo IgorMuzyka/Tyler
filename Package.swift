@@ -15,6 +15,7 @@ let package = Package(
         .package(url: "https://github.com/IgorMuzyka/Tyler.Style", .branch("master")),
         .package(url: "https://github.com/IgorMuzyka/Tyler.Anchor", .branch("master")),
         .package(url: "https://github.com/IgorMuzyka/Tyler.Action", .branch("master")),
+        .package(url: "https://github.com/IgorMuzyka/Type-Preserving-Coding-Adapter", .branch("master")),
     ],
     targets: [
         .target(
@@ -26,6 +27,7 @@ let package = Package(
                 "Tyler.Identifier",
                 "Tyler.Anchor",
                 "Tyler.Action",
+                "TypePreservingCodingAdapter",
             ]
         ),
     ]

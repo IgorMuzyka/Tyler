@@ -1,35 +1,35 @@
 
+import TypePreservingCodingAdapter
 import Tag
 import Action
-import Foundation
 
-public class ActionWrap: Codable, Taggable {
+public final class ActionWrap: Tagged, Codable {
 
-    private let data: Data
-    internal let actionType: String
-    public var tags: [Tag] = []
+    public let tags: [Tag]
+    public let action: Action
 
-	public init<GenericAction: Action>(action: GenericAction, tags: [Tag]) {
-        actionType = String(reflecting: type(of: action))
-		self.tags = tags
-        data = try! Tyler.encoder.encode(action)
+    private enum CodingKeys: CodingKey {
+
+        case action
+        case tags
     }
-}
 
-#if os(iOS) || os(tvOS) || os(macOS)
-
-extension ActionWrap {
-
-    internal func unwrap(store: ActionsSerializersStore) throws -> Action? {
-        return try store.access(key: actionType)?(data)
+    public init(action: Action, tags: [Tag]) {
+        self.action = action
+        self.tags = tags
     }
-}
 
-#endif
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-extension Action {
+        self.tags = try container.decode([Tag].self, forKey: .tags)
+        self.action = try container.decode(Wrap.self, forKey: .action).wrapped as! Action
+    }
 
-	internal func wrap(tags: [Tag]) -> ActionWrap {
-		return ActionWrap(action: self, tags: tags)
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(tags, forKey: .tags)
+        try container.encode(Wrap(wrapped: action, strategy: .alias), forKey: .action)
     }
 }
