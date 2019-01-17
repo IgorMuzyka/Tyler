@@ -158,13 +158,15 @@ open class Tyler {}
 
 extension Tyler {
 
-    internal static let decoder: JSONDecoder = {
+    public static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.userInfo[.typePreservingAdapter] = adapter
+        decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
-    internal static let encoder: JSONEncoder = {
+    public static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
         encoder.userInfo[.typePreservingAdapter] = adapter
         return encoder
     }()
