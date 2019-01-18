@@ -59,7 +59,7 @@ extension Anchor {
             subject = .id(newId)
         }
 
-        if case let .anchor(anchor) = to {
+        if case let .anchor(anchor) = toValue {
             anchor.swap(originalId: originalId, with: newId)
         }
     }
