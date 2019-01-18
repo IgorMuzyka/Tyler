@@ -1,16 +1,17 @@
 
 import Anchor
+import Variable
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
 extension Tile {
 
-	internal func constraints(context: Context) -> [NativeConstraint] {
-		return anchors.flatMap { constraints(for: $0, in: context) }
+	internal func constraints(context: Context, pair: VariableResolutionPair) throws -> [NativeConstraint] {
+        return try anchors.flatMap { try constraints(for: $0, in: context, pair: pair) }
 	}
 
-	internal func constraints(for anchor: Anchor, in context: Context) -> [NativeConstraint] {
-		return anchor.constraints(context: anchor.context(in: context))
+	internal func constraints(for anchor: Anchor, in context: Context, pair: VariableResolutionPair) throws -> [NativeConstraint] {
+        return try anchor.constraints(context: anchor.context(in: context), pair: pair)
 	}
 }
 

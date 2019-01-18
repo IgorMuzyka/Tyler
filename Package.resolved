@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Action",
         "state": {
           "branch": "master",
-          "revision": "212c77d09d8175310764c289af50953a5a612df2",
+          "revision": "9a351004f0ee9eefe3bc2b9fbb7dc9229f262f3c",
           "version": null
         }
       },
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Anchor",
         "state": {
           "branch": "master",
-          "revision": "eeb9d09bc25963a96a770a8812c094da9594d471",
+          "revision": "c520b37ef5bf9d8e68aec54f9495c2e2bbef5423",
           "version": null
         }
       },
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/IgorMuzyka/Tyler.Style",
         "state": {
           "branch": "master",
-          "revision": "938a47e7dc695fcf8c9e58288031cd7a21811139",
+          "revision": "87e1e163935220859de9f06843a10c6beeb18490",
           "version": null
         }
       },

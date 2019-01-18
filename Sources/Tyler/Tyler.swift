@@ -52,6 +52,7 @@ public extension Tyler {
                     view: container,
                     contexts: [self.construct(tile, factory: self.factory)].compactMap { $0 }
             )}
+            |> { ($0, self.stores, pool) }
             |> layout
             |> { ($0, self.stores, pool, tags) }
             |> style
@@ -62,13 +63,15 @@ public extension Tyler {
 	}
 
     @discardableResult
-    public func layout(context: Context) -> Context {
+    public func layout(context: Context, stores: Stores, pool: VariablePool) -> Context {
         guard let contexts = context.contexts else { return context }
 
-        context.constraints = contexts.flatMap { $0.produceConstraints() }
+        logErrorIfCatched {
+            context.constraints = try contexts.flatMap { try $0.produceConstraints(pair: (pool, stores.variableResolvers)) }
+        }
 
         contexts.forEach(disableAutoresizingMaskCosntraints)
-        _ = contexts.map(layout)
+        _ = contexts.map { ($0, self.stores, pool) }.map(layout)
 
         return context
     }

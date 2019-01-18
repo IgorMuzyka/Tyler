@@ -1,5 +1,6 @@
 
 import Tag
+import Variable
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
@@ -13,8 +14,8 @@ extension Context {
 
 extension Context {
 
-	internal func produceConstraints() -> [NativeConstraint] {
-		return tile.constraints(context: self)
+	internal func produceConstraints(pair: VariableResolutionPair) throws -> [NativeConstraint] {
+        return try tile.constraints(context: self, pair: pair)
 	}
 
     @discardableResult
