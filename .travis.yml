@@ -14,5 +14,5 @@ install:
   - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)";
 
 script:
-  - swift build
+  - ./.travis.build.script
 
